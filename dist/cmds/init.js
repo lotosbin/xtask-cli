@@ -4,6 +4,14 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
+var _path = require('path');
+
+var _path2 = _interopRequireDefault(_path);
+
+var _shelljs = require('shelljs');
+
+var _shelljs2 = _interopRequireDefault(_shelljs);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.command = 'init';
@@ -15,7 +23,12 @@ exports.builder = yargs => {
 };
 exports.handler = function (argv) {
     console.log('init');
-    let path = '.xtask';
+    let pwd = _shelljs2.default.pwd();
+    if (pwd.code !== 0) {
+        console.error(pwd.stderr);
+        return;
+    }
+    let path = path.join(pwd.stdout, '.xtask');
     if (_fs2.default.existsSync(path)) {
         console.warn('.xtask already exists.');
         return;
@@ -23,7 +36,7 @@ exports.handler = function (argv) {
     _fs2.default.mkdirSync(path);
     const jsonfile = require('jsonfile');
     const config = { tasks: [] };
-    const file = '.xtask/data.json';
+    const file = path.join(path, 'data.json');
     jsonfile.writeFile(file, config, { spaces: 2 }, function (err) {
         console.error(err);
     });

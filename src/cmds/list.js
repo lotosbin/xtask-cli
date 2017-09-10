@@ -1,5 +1,6 @@
-import findParentDir from "find-parent-dir";
-
+var fs = require('fs');
+var path = require('path');
+eval(fs.readFileSync(path.join(__dirname, '../util.js')) + '');
 exports.command = ['list', 'l'];
 
 exports.describe = 'list all task';
@@ -10,19 +11,11 @@ exports.builder = yargs => {
         .alias('h', 'help')
 }
 exports.handler = function (argv) {
-    let dir;
-    try {
-        dir = findParentDir.sync(__dirname, '.xtask');
-        if (!dir) {
-            console.error('cannot find .xtask folder,please use t init command in project root')
-            return;
-        }
-    } catch (err) {
-        console.error('error', err);
-        return
+    const file = global.getFile();
+    if (!file) {
+        console.error(`file ${file} is not exist, may be is not init,`)
     }
     const json = require('jsonfile');
-    const file = dir + '.xtask/data.json';
     const config = json.readFileSync(file);
     const tasks = config.tasks || [];
     for (let index in tasks.reverse()) {

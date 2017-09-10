@@ -1,7 +1,10 @@
 #!/usr/bin/env node
+import findParentDir from "find-parent-dir";
+import path from "path";
+import shell from 'shelljs';
+import fs from 'fs'
 
-
-var yargs = require('yargs');
+const yargs = require('yargs');
 // noinspection BadExpressionStatementJS
 yargs.usage('$0 <cmd> [args]')
     .commandDir('cmds')
