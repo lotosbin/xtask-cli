@@ -4,7 +4,10 @@ exports.command = 'init';
 
 exports.describe = 'init task config';
 
-exports.builder = {};
+exports.builder = yargs => {
+    return yargs.help('h')
+        .alias('h', 'help')
+};
 exports.handler = function (argv) {
     console.log('init');
     let path = '.xtask';

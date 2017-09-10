@@ -12,6 +12,8 @@ exports.builder = yargs => {
         describe: 'clip to clipboard',
         type: 'boolean'
     })
+        .help('h')
+        .alias('h', 'help')
 };
 
 exports.handler = function (argv) {

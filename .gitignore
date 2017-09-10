@@ -168,4 +168,5 @@ typings/
 .env
 
 .idea
-.xtask
+.xtask/
+.DS_Store

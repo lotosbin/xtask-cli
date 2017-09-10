@@ -11,7 +11,7 @@ exports.command = ['list', 'l'];
 exports.describe = 'list all task';
 
 exports.builder = yargs => {
-    return yargs.alias('list', 'l');
+    return yargs.alias('list', 'l').help('h').alias('h', 'help');
 };
 exports.handler = function (argv) {
     let dir;

@@ -19,7 +19,7 @@ exports.builder = yargs => {
         alias: 'c',
         describe: 'clip to clipboard',
         type: 'boolean'
-    });
+    }).help('h').alias('h', 'help');
 };
 
 exports.handler = function (argv) {

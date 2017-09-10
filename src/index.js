@@ -6,5 +6,6 @@ var yargs = require('yargs');
 yargs.usage('$0 <cmd> [args]')
     .commandDir('cmds')
     .demandCommand()
-    .help()
+    .help('h')
+    .alias('h', 'help')
     .argv;

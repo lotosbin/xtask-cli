@@ -9,7 +9,9 @@ exports.builder = yargs => {
         alias: 'c',
         describe: 'clip to clipboard',
         type: 'boolean'
-    });
+    })
+        .help('h')
+        .alias('h', 'help');
 };
 const ncp = require("copy-paste");
 
