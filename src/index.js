@@ -8,4 +8,5 @@ yargs.usage('$0 <cmd> [args]')
     .demandCommand()
     .help('h')
     .alias('h', 'help')
+    .epilog('copyright 2017 (c) liubinbin<lotosbin@gmail.com>')
     .argv;
