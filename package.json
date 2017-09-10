@@ -1,6 +1,6 @@
 {
   "name": "xtask-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "task todo manage for command line , task stack pattern ,task cycle patter ,.....",
   "main": "index.js",
   "bin": {
