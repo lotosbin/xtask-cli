@@ -1,6 +1,16 @@
 # xtask-cli
 task todo manage for command line , task stack pattern ,task cycle patter ,.....
+[![npm version](https://badge.fury.io/js/xtask-cli.svg)](https://badge.fury.io/js/xtask-cli)
+[![GitHub version](https://badge.fury.io/gh/lotosbin%2Fxtask-cli.svg)](https://badge.fury.io/gh/lotosbin%2Fxtask-cli)
 
+# Install
+```bash
+yarn global add xtask-cli
+```
+or
+```bash
+npm install --global xtask-cli
+```
 
 # Usage
 ```bash
