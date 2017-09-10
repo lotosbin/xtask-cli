@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "task todo manage for command line , task stack pattern ,task cycle patter ,.....",
   "main": "index.js",
+  "bin": {
+    "t": "dist/index.js"
+  },
   "scripts": {
+    "babel": "babel src --out-dir dist",
+    "watch": "babel src --out-dir dist --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -15,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/lotosbin/xtask-cli/issues"
   },
-  "homepage": "https://github.com/lotosbin/xtask-cli#readme"
+  "homepage": "https://github.com/lotosbin/xtask-cli#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0"
+  }
 }
