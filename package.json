@@ -23,6 +23,10 @@
   "homepage": "https://github.com/lotosbin/xtask-cli#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.0"
+    "babel-preset-env": "^1.6.0",
+    "jsonfile": "^3.0.1"
+  },
+  "dependencies": {
+    "config": "^1.26.2"
   }
 }
