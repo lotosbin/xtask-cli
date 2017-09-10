@@ -1,2 +1,10 @@
 #!/usr/bin/env node
-console.log('hello world!!!');
+
+
+var yargs = require('yargs');
+// noinspection BadExpressionStatementJS
+yargs.usage('$0 <cmd> [args]')
+    .commandDir('cmds')
+    .demandCommand()
+    .help()
+    .argv;
