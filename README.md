@@ -18,17 +18,23 @@ npm install --global xtask-cli
 t -h
 /usr/local/bin/t <cmd> [args]
 
-命令：
-  init            init task config
-  list            list all task                                     [aliases: l]
-  pop             pop the top task
-  push [message]  list all task
-  top             top task                                          [aliases: t]
+Commands:
+  cycle              cycle the task,equal pop then unshift.if --reverse ,equal
+                     shift then push
+  info               show info
+  init               init task config
+  list               list all task                                  [aliases: l]
+  pop                pop the top task
+  push [message]     list all task
+  shift              shift the bottom task
+  top                top task                                       [aliases: t]
+  unshift [message]  unshift a task
 
-选项：
-  --help  显示帮助信息                                                    [布尔]
+Options:
+  -h, --help  Show help                                                [boolean]
 
-缺少 non-option 参数：传入了 0 个, 至少需要 1 个
+copyright 2017 (c) liubinbin<lotosbin@gmail.com>
+
 
 ```
 
