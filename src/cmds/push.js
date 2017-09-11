@@ -42,7 +42,7 @@ exports.handler = function (argv) {
                 const tasks = config.tasks;
                 for (let index in tasks.reverse()) {
                     let task = tasks[index];
-                    console.log(task);
+                    console.log(`${index}\t: ${task}`);
                 }
             })
         });

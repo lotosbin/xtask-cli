@@ -15,20 +15,15 @@ var _path2 = _interopRequireDefault(_path);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 eval(_fs2.default.readFileSync(_path2.default.join(__dirname, '../util.js')) + '');
-exports.command = 'cycle';
+exports.command = 'pick [number]';
 
-exports.describe = 'cycle the task,equal pop then unshift.if --reverse ,equal shift then push';
+exports.describe = 'pick the specific task';
 
 exports.builder = yargs => {
     return yargs.option('clip', {
         alias: 'c',
         describe: 'clip to clipboard',
         type: 'boolean'
-    }).option('reverse', {
-        alias: 'r',
-        describe: 'reverse cycle',
-        type: 'boolean',
-        default: false
     }).help('h').alias('h', 'help');
 };
 
@@ -45,27 +40,17 @@ exports.handler = function (argv) {
             console.info("tasks is empty");
             return;
         }
-        if (argv.reverse) {
-            let popTask = config.tasks.shift();
-            config.tasks.push(popTask);
-            console.info('cycle: ' + popTask);
-
-            if (argv.clip) {
-                _copyPaste2.default.copy(popTask, () => {
-                    console.info(`task '${popTask}' already copied`);
-                });
-            }
-        } else {
-            let popTask = config.tasks.pop();
-            config.tasks.unshift(popTask);
-            console.info('cycle: ' + popTask);
-
-            if (argv.clip) {
-                _copyPaste2.default.copy(popTask, () => {
-                    console.info(`task '${popTask}' already copied`);
-                });
-            }
+        var index = parseInt(argv.number);
+        if (index < 0 || index >= config.tasks.length) {
+            config.error("number is out of range");
+            return;
         }
+        let tasks = config.tasks.reverse();
+        let task = tasks[index];
+        tasks.splice(index, 1);
+        config.tasks = tasks.reverse();
+
+        console.info('pick: ' + task);
 
         global.writeConfig(config, function (err) {
             if (err) {
@@ -79,5 +64,10 @@ exports.handler = function (argv) {
                 console.log(`${index}\t: ${task}`);
             }
         });
+        if (argv.clip) {
+            _copyPaste2.default.copy(task, () => {
+                console.info(`task '${task}' already copied`);
+            });
+        }
     });
 };
