@@ -22,7 +22,7 @@ exports.handler = function (argv) {
     if (task) {
         global.readConfig(function (error, config) {
             if (error) {
-                console.error(error)
+                console.error(error);
                 return
             }
             if (!config.tasks) {
@@ -39,9 +39,9 @@ exports.handler = function (argv) {
                     console.error(err);
                     return;
                 }
-                const tasks = config.tasks;
-                for (let index in tasks.reverse()) {
-                    let task = tasks[index];
+                let tasks = config.tasks.reverse();
+                for (let index in tasks) {
+                    const task = tasks[index];
                     console.log(`${index}\t: ${task}`);
                 }
             })

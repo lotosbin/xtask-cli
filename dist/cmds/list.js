@@ -8,18 +8,22 @@ exports.command = ['list', 'l'];
 exports.describe = 'list all task';
 
 exports.builder = yargs => {
-    return yargs.alias('list', 'l').help('h').alias('h', 'help');
+    return yargs.help('h').alias('h', 'help');
 };
 exports.handler = function (argv) {
-    const file = global.getFile();
-    if (!file) {
-        console.error(`file ${file} is not exist, may be is not init,`);
-    }
-    const json = require('jsonfile');
-    const config = json.readFileSync(file);
-    const tasks = config.tasks || [];
-    for (let index in tasks.reverse()) {
-        const task = tasks[index];
-        console.log(`${index}\t: ${task}`);
-    }
+    global.readConfig(function (error, config) {
+        if (error) {
+            console.error(error);
+            return;
+        }
+        if (!config.tasks) {
+            config.tasks = [];
+        }
+
+        let tasks = config.tasks.reverse();
+        for (let index in tasks) {
+            const task = tasks[index];
+            console.log(`${index}\t: ${task}`);
+        }
+    });
 };
