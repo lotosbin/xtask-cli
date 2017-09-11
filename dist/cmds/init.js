@@ -28,15 +28,15 @@ exports.handler = function (argv) {
         console.error(pwd.stderr);
         return;
     }
-    let path = path.join(pwd.stdout, '.xtask');
-    if (_fs2.default.existsSync(path)) {
+    let xpath = _path2.default.join(pwd.stdout, '.xtask');
+    if (_fs2.default.existsSync(xpath)) {
         console.warn('.xtask already exists.');
         return;
     }
-    _fs2.default.mkdirSync(path);
+    _fs2.default.mkdirSync(xpath);
     const jsonfile = require('jsonfile');
     const config = { tasks: [] };
-    const file = path.join(path, 'data.json');
+    const file = _path2.default.join(xpath, 'data.json');
     jsonfile.writeFile(file, config, { spaces: 2 }, function (err) {
         console.error(err);
     });
